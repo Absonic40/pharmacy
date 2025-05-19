@@ -2,8 +2,25 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: 'Yekan Bakh FaNum';
+  font-style: normal;
+  font-weight: normal;
+  src: url('../Webfonts/fonts/woff/YekanBakhFaNum-Regular.woff') format('woff'),
+       url('../Webfonts/fonts/woff2/YekanBakhFaNum-Regular.woff2') format('woff2');
+}
 
+:root {
+  font-family: 'Yekan Bakh FaNum', -apple-system, BlinkMacSystemFont, sans-serif;
+}
 
 body {
+  direction: rtl;
   font-family: 'Yekan Bakh', sans-serif;
+}
+
+.fa-num {
+  font-feature-settings: "ss01";
+  -webkit-font-feature-settings: "ss01";
+  font-family: 'Yekan Bakh FaNum', sans-serif;
 }
