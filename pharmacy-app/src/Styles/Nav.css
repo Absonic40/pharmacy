@@ -25,13 +25,13 @@ body{
 .nav-logo {
   display: flex;
   justify-content: center;
-  margin-bottom: 30px;
+  align-items: center;
+  margin-bottom: 20px; 
 }
 
 .nav-logo > img {
-  width: 45px;
-  height: 45px;
-  object-fit: contain;
+  width: 80px; 
+  height: auto; 
 }
 
 /* آیتم‌های نوبار */
@@ -58,8 +58,37 @@ body{
   background-color: rgba(255, 255, 255, 0.3);
 }
 
+/* استایل‌های active */
 .nav-item.active {
-  background-color: rgba(255, 255, 255, 0.3);
+  background-color: #059784; 
+  margin-left: 0;
+  padding-left: 15px;
+  border-radius: 16px;
+}
+
+.nav-item.active svg {
+  color: #91FFF1; 
+}
+
+.nav-item.active svg path {
+  stroke: #91FFF1;
+  fill: none;
+}
+
+/* استایل مخصوص آیکون خانه در حالت اکتیو */
+.nav-item.active .nav-home-icon path {
+  fill: #91FFF1 !important;
+  stroke-width: 0.1 !important;
+}
+
+/* استایل بقیه آیکون‌ها در حالت اکتیو */
+.nav-item.active svg:not(.nav-home-icon) path {
+  stroke: #91FFF1;
+  fill: none;
+}
+
+.nav-item.active .nav-text {
+  color: #91FFF1; 
 }
 
 .nav-text {
@@ -100,16 +129,26 @@ body{
 /* تنظیمات ریسپانسیو */
 @media (max-width: 768px) {
   .nav-container {
-    display: none;
+    display: flex;
+    flex-direction: column;
     right: 0;
     top: 0;
     height: 100vh;
     border-radius: 0;
     width: 250px;
+    position: fixed;
+    z-index: 10;
+    background: #91FFF1;
+    transform: translateX(100%);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform 0.35s cubic-bezier(0.4,0,0.2,1), opacity 0.35s cubic-bezier(0.4,0,0.2,1);
   }
 
   .nav-container.open {
-    display: flex;
+    transform: translateX(0);
+    opacity: 1;
+    pointer-events: auto;
   }
 
   .hamburger-btn {
@@ -171,31 +210,6 @@ body{
   background-color: rgba(0, 77, 8, 0.1);
 }
 
-/* استایل‌های active */
-.nav-item.active {
-  background-color: #004D08;
-  margin-left: 0;
-  padding-left: 15px;
-  border-radius: 0 16px 16px 0;
-}
-
-.nav-item.active::after {
-  content: '';
-  position: absolute;
-  left: -10px;
-  width: 20px;
-  height: 50px;
-  background-color: #004D08;
-  box-shadow: -5px 0 10px -5px rgba(0, 0, 0, 0.3);
-  clip-path: polygon(100% 15%, 0 0, 0 100%, 100% 85%);
-  border-radius: 0 10px 10px 0;
-}
-
-.nav-item.active svg,
-.nav-item.active .nav-text {
-  color: #91FFF1;
-}
-
 /* متن آیتم‌ها */
 .nav-text {
   display: inline-block;
@@ -219,3 +233,4 @@ body{
   align-items: center;
   justify-content: center;
 }
+
