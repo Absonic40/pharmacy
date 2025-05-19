@@ -3,13 +3,19 @@ import Modal from '../Components/Modal';
 import Nav from '../Components/Nav';
 
 const AddUser: React.FC = () => {
+  // مدیریت وضعیت باز و بسته بودن مودال
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [code] = useState('123456'); // کد اشتراک ثابت برای نمایش
+  // مقدار پیش‌فرض کد اشتراک
+  const [code] = useState('123456'); 
+  // ذخیره شناسه کاربر انتخاب‌شده
+  const [selectedUserId, setSelectedUserId] = useState<string | null>(null); 
 
+  // باز کردن مودال
   const handleOpenModal = () => {
     setIsModalOpen(true);
   };
 
+  // بستن مودال
   const handleCloseModal = () => {
     setIsModalOpen(false);
   };
@@ -94,14 +100,19 @@ const AddUser: React.FC = () => {
             value={"ایجاد کد اشتراک"}
             type="button"
             onClick={handleOpenModal}
-            className='w-[190px] h-12 px-4 text-[#02564b] text-[20px] font-semibold font-["Yekan Bakh"] bg-[#91fff0] rounded-xl shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)]'
+            className='w-[190px] h-12 z-0 px-4 text-[#02564b] text-[20px] font-semibold font-["Yekan Bakh"] bg-[#91fff0] rounded-xl shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)]'
           />
         </div>
       </form>
 
-      <Modal isOpen={isModalOpen} onClose={handleCloseModal} code={code} />
+      <Modal 
+        isOpen={isModalOpen} 
+        onClose={handleCloseModal} 
+        userId={selectedUserId || ""} 
+        code={code} 
+      />
     </div>
   );
 };
 
-export default AddUser; 
+export default AddUser;
